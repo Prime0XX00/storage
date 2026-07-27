@@ -1,0 +1,5 @@
+@import "tailwindcss";
+
+body {
+	@apply min-w-screen min-h-screen m-0 bg-red-600;
+}

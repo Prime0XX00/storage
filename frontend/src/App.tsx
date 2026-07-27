@@ -1,5 +1,11 @@
+import BasicLayout from "./components/layouts/basic/BasicLayout";
+
 function App() {
-	return <></>;
+	return (
+		<>
+			<BasicLayout />
+		</>
+	);
 }
 
 export default App;
