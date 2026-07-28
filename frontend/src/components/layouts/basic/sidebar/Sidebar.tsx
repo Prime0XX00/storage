@@ -24,6 +24,12 @@ const Sidebar = (): React.JSX.Element => {
 			></SidebarLink>
 
 			<SidebarLink
+				icon={"warehouse"}
+				title="Warehouses"
+				to="warehouses"
+			></SidebarLink>
+
+			<SidebarLink
 				icon={"user"}
 				title="Users"
 				to="users"
