@@ -1,5 +1,53 @@
 @import "tailwindcss";
 
-body {
-	@apply min-w-screen min-h-screen m-0 bg-red-600;
+@theme {
+	--color-main: var(--color-white);
+	--color-main-text: var(--color-slate-700);
+	--color-main-border: var(--color-slate-300);
+	--color-main-hover: var(--color-slate-100);
+	--color-main-active: var(--color-slate-200);
+
+	--color-accent: var(--color-blue-700);
+
+	--spacing-element-height: 34px;
+}
+
+#root {
+	@apply min-w-screen min-h-screen m-0 bg-main text-main-text;
+}
+
+.sidebar {
+	@apply w-fit h-screen border-r border-main-border p-5 flex flex-col gap-y-2 items-end;
+}
+
+.sidebar-link {
+	@apply transition-[width] duration-300 h-element-height cursor-pointer rounded-md flex items-center justify-between px-2 gap-x-5 overflow-hidden;
+}
+
+.sidebar-link.expanded {
+	@apply w-50;
+}
+
+.sidebar-link:not(.expanded) {
+	@apply w-element-height;
+}
+
+.sidebar-link.active {
+	@apply text-accent hover:bg-accent/15 active:bg-accent/20 bg-accent/10;
+}
+
+.sidebar-link:not(.active) {
+	@apply hover:bg-main-hover active:bg-main-active bg-main;
+}
+
+.sidebar-link .sidebar-link-title {
+	@apply transition-opacity duration-300;
+}
+
+.sidebar-link.expanded .sidebar-link-title {
+	@apply opacity-100;
+}
+
+.sidebar-link:not(.expanded) .sidebar-link-title {
+	@apply opacity-0;
 }
