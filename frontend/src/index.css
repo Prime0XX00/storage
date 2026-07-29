@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -6,6 +7,8 @@
 }
 
 @theme {
+	--font-roboto: "Roboto", sans-serif;
+
 	--color-main: var(--color-white);
 	--color-main-text: var(--color-slate-700);
 	--color-main-border: var(--color-slate-300);
@@ -25,7 +28,7 @@
 }
 
 #root {
-	@apply min-w-screen min-h-screen m-0 bg-main text-main-text;
+	@apply min-w-screen min-h-screen m-0 bg-main text-main-text font-roboto;
 }
 
 .sidebar {
@@ -33,7 +36,7 @@
 }
 
 .sidebar-link {
-	@apply transition-[width] duration-300 h-element-height cursor-pointer rounded-md flex items-center justify-between px-2 gap-x-5 overflow-hidden;
+	@apply transition-[width] duration-300 h-element-height cursor-pointer rounded-md flex items-center justify-start px-2 gap-x-2 overflow-hidden;
 }
 
 .sidebar-link.expanded {
