@@ -13,7 +13,7 @@ const IconButton = ({
 		<button
 			onClick={onClick}
 			disabled={disabled}
-			className="hover:bg-main-hover active:bg-main-active bg-main cursor-pointer rounded-full size-element-height flex items-center justify-center"
+			className="hover:bg-element-hover active:bg-element-active bg-element-bg cursor-pointer rounded-full size-element-height flex items-center justify-center"
 		>
 			<DynamicIcon
 				name={icon}

@@ -1,15 +1,27 @@
 @import "tailwindcss";
 
+:root {
+	--color-element-oklch: 44.6% 0.043 257.281;
+	--color-accent-oklch: 48.8% 0.243 264.376;
+}
+
 @theme {
 	--color-main: var(--color-white);
 	--color-main-text: var(--color-slate-700);
 	--color-main-border: var(--color-slate-300);
-	--color-main-hover: var(--color-slate-100);
-	--color-main-active: var(--color-slate-200);
 
-	--color-accent: var(--color-blue-700);
-
+	--color-element: oklch(var(--color-element-oklch));
+	--color-element-bg: oklch(var(--color-element-oklch) / 0);
+	--color-element-hover: oklch(var(--color-element-oklch) / 0.1);
+	--color-element-active: oklch(var(--color-element-oklch) / 0.15);
 	--spacing-element-height: 34px;
+
+	--color-accent: oklch(var(--color-accent-oklch));
+	--color-accent-bg: oklch(var(--color-accent-oklch) / 0.1);
+	--color-accent-hover: oklch(var(--color-accent-oklch) / 0.15);
+	--color-accent-active: oklch(var(--color-accent-oklch) / 0.2);
+
+	--color-sidebar: var(--color-slate-100);
 }
 
 #root {
@@ -17,7 +29,7 @@
 }
 
 .sidebar {
-	@apply w-fit h-screen border-r border-main-border p-5 flex flex-col gap-y-2 items-end;
+	@apply w-fit h-screen border-r bg-sidebar border-main-border p-5 flex flex-col gap-y-2 items-end;
 }
 
 .sidebar-link {
@@ -33,11 +45,11 @@
 }
 
 .sidebar-link.active {
-	@apply text-accent hover:bg-accent/15 active:bg-accent/20 bg-accent/10;
+	@apply text-accent hover:bg-accent-hover active:bg-accent-active bg-accent-bg;
 }
 
 .sidebar-link:not(.active) {
-	@apply hover:bg-main-hover active:bg-main-active bg-main;
+	@apply hover:bg-element-hover active:bg-element-active bg-element-bg;
 }
 
 .sidebar-link .sidebar-link-title {
