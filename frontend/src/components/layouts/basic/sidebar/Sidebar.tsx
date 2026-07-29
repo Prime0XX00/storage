@@ -1,19 +1,17 @@
 import { useContext } from "react";
 import { LayoutContext } from "../BasicLayout";
-import { MenuIcon } from "lucide-react";
 import SidebarLink from "./SidebarLink";
+import IconButton from "../../../IconButton";
 
 const Sidebar = (): React.JSX.Element => {
 	const { toggleSidebar } = useContext(LayoutContext);
 
 	return (
 		<div className={`sidebar`}>
-			<button
+			<IconButton
+				icon="menu"
 				onClick={() => toggleSidebar?.()}
-				className="hover:bg-main-hover active:bg-main-active bg-main cursor-pointer rounded-full size-element-height flex items-center justify-center"
-			>
-				<MenuIcon size={18}></MenuIcon>
-			</button>
+			></IconButton>
 
 			<div className="border-t border-main-border w-full"></div>
 
