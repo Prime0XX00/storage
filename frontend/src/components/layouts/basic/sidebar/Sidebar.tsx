@@ -32,6 +32,12 @@ const Sidebar = (): React.JSX.Element => {
 				title="Users"
 				to="users"
 			></SidebarLink>
+
+			<SidebarLink
+				icon={"settings"}
+				title="Settings"
+				to="settings"
+			></SidebarLink>
 		</div>
 	);
 };

@@ -26,6 +26,10 @@ function App() {
 							path="users"
 							element={<></>}
 						/>
+						<Route
+							path="*"
+							element={<></>}
+						></Route>
 					</Route>
 				</Routes>
 			</QueryClientProvider>

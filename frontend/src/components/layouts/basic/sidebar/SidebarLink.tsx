@@ -27,9 +27,10 @@ const SidebarLink = ({
 			<DynamicIcon
 				name={icon}
 				size={18}
+				strokeWidth={1.75}
 				className="min-w-4.5"
 			></DynamicIcon>
-			<span className={`sidebar-link-title`}>{title}</span>
+			<span className={`sidebar-link-title w-full`}>{title}</span>
 		</NavLink>
 	);
 };

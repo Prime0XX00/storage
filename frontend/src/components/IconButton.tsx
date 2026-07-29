@@ -17,6 +17,7 @@ const IconButton = ({
 		>
 			<DynamicIcon
 				name={icon}
+				strokeWidth={1.75}
 				size={18}
 			></DynamicIcon>
 		</button>
