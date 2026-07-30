@@ -1,22 +1,52 @@
-import { createContext, useState } from "react";
-import type { User } from "../types";
+import { createContext, useEffect, useState } from "react";
+import type { LoginData, User } from "../types";
+import loginUserService from "../services/loginUser";
+import { useLocation, useNavigate } from "react-router";
 
 type UserContextProps = {
 	user: User | undefined;
-	setUser: (user: User) => void;
+	login: (user: LoginData) => void;
+	logout: () => void;
 };
 
-const UserContext = createContext<UserContextProps | null>(null);
+export const UserContext = createContext<UserContextProps | null>(null);
 
 type UserProviderProps = {
 	children?: React.ReactElement;
 };
 
 const UserProvider = ({ children }: UserProviderProps): React.JSX.Element => {
+	const location = useLocation();
+	const navigate = useNavigate();
+
 	const [user, setUser] = useState<User>();
 
+	const login = async (loginData: LoginData) => {
+		const { username, password } = loginData;
+		if (username == "" || password == "") return;
+
+		const user = await loginUserService(loginData);
+
+		if (user) {
+			setUser(user);
+			navigate("/");
+		}
+	};
+
+	const logout = () => {
+		// call BE
+		setUser(undefined);
+		navigate("login");
+	};
+
+	useEffect(() => {
+		if (!user) {
+			navigate("login");
+		}
+	}, [location.pathname]);
+
 	return (
-		<UserContext.Provider value={{ user: user, setUser }}>
+		<UserContext.Provider value={{ user, login, logout }}>
 			{children}
 		</UserContext.Provider>
 	);

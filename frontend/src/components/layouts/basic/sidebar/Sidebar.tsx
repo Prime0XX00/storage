@@ -2,9 +2,13 @@ import { useContext } from "react";
 import { LayoutContext } from "../BasicLayout";
 import SidebarLink from "./SidebarLink";
 import IconButton from "../../../IconButton";
+import { DynamicIcon } from "lucide-react/dynamic";
+import { UserContext } from "../../../../features/user/providers/UserProvider";
 
 const Sidebar = (): React.JSX.Element => {
-	const { toggleSidebar } = useContext(LayoutContext);
+	const { sidebarExpanded, toggleSidebar } = useContext(LayoutContext);
+
+	const { user, logout } = useContext(UserContext) ?? {};
 
 	return (
 		<div className={`sidebar`}>
@@ -38,6 +42,45 @@ const Sidebar = (): React.JSX.Element => {
 				title="Settings"
 				to="settings"
 			></SidebarLink>
+
+			{user && (
+				<>
+					<div className="border-t border-main-border w-full"></div>
+
+					<div
+						className={`${sidebarExpanded ? " expanded" : ""} sidebar-link`}
+					>
+						<DynamicIcon
+							name={"user-circle"}
+							size={18}
+							strokeWidth={1.75}
+							className="min-w-4.5"
+						></DynamicIcon>
+						<span
+							className={`sidebar-link-title w-full text-start`}
+						>
+							{user?.username}
+						</span>
+					</div>
+
+					<button
+						className={`${sidebarExpanded ? " expanded" : ""} sidebar-link`}
+						onClick={() => logout?.()}
+					>
+						<DynamicIcon
+							name={"log-out"}
+							size={18}
+							strokeWidth={1.75}
+							className="min-w-4.5"
+						></DynamicIcon>
+						<span
+							className={`sidebar-link-title w-full text-start`}
+						>
+							Logout
+						</span>
+					</button>
+				</>
+			)}
 		</div>
 	);
 };

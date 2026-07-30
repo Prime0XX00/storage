@@ -3,6 +3,7 @@ import BasicLayout from "./components/layouts/basic/BasicLayout";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import WarehouseOverview from "./features/warehouse/views/WarehouseOverview";
 import UserProvider from "./features/user/providers/UserProvider";
+import LoginView from "./features/user/views/LoginView";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,10 @@ function App() {
 								element={<></>}
 							></Route>
 						</Route>
+						<Route
+							path="login"
+							element={<LoginView></LoginView>}
+						></Route>
 					</Routes>
 				</UserProvider>
 			</QueryClientProvider>
