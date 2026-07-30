@@ -44,3 +44,32 @@ export const registerUser = async (
 
 	res.json(user);
 };
+
+export const loginUser = async (
+	req: Request,
+	res: Response,
+	next: NextFunction,
+) => {
+	const body = req.body;
+
+	const { username, password } = body;
+
+	if (!username) throw new Error("Parameter 'username' is missing.");
+	if (!password) throw new Error("Parameter 'password' is missing.");
+
+	const [existingUser] = await db
+		.select()
+		.from(userTable)
+		.where(eq(userTable.username, username));
+
+	if (!existingUser) throw new Error("User does not exists.");
+
+	const isCorrectPassword = await bcrypt.compare(
+		password,
+		existingUser.password,
+	);
+
+	if (!isCorrectPassword) throw new Error("Entered password is wrong.");
+
+	res.json(existingUser);
+};
