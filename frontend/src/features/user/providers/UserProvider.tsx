@@ -8,15 +8,17 @@ type UserContextProps = {
 
 const UserContext = createContext<UserContextProps | null>(null);
 
-type UserProviderProps = {};
+type UserProviderProps = {
+	children?: React.ReactElement;
+};
 
-const UserProvider = ({}: UserProviderProps): React.JSX.Element => {
+const UserProvider = ({ children }: UserProviderProps): React.JSX.Element => {
 	const [user, setUser] = useState<User>();
 
 	return (
-		<UserContext.Provider
-			value={{ user: user, setUser }}
-		></UserContext.Provider>
+		<UserContext.Provider value={{ user: user, setUser }}>
+			{children}
+		</UserContext.Provider>
 	);
 };
 
