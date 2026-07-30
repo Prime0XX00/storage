@@ -71,5 +71,7 @@ export const loginUser = async (
 
 	if (!isCorrectPassword) throw new Error("Entered password is wrong.");
 
-	res.json(existingUser);
+	const { password: _, ...user } = existingUser;
+
+	res.json(user);
 };
