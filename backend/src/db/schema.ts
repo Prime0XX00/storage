@@ -5,3 +5,11 @@ export const warehousesTable = sqliteTable("warehouse", {
 	name: text().notNull(),
 	code: text().notNull().unique(),
 });
+
+export const userTable = sqliteTable("user", {
+	id: int().primaryKey({ autoIncrement: true }),
+	first_name: text().notNull(),
+	last_name: text().notNull(),
+	username: text().notNull().unique(),
+	password: text().notNull(),
+});
