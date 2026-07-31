@@ -1,7 +1,7 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import type { LoginData, User } from "../types";
 import loginUserService from "../services/loginUser";
-import { useLocation, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 
 type UserContextProps = {
 	user: User | undefined;
@@ -16,7 +16,6 @@ type UserProviderProps = {
 };
 
 const UserProvider = ({ children }: UserProviderProps): React.JSX.Element => {
-	const location = useLocation();
 	const navigate = useNavigate();
 
 	const [user, setUser] = useState<User>();
@@ -38,12 +37,6 @@ const UserProvider = ({ children }: UserProviderProps): React.JSX.Element => {
 		setUser(undefined);
 		navigate("login");
 	};
-
-	useEffect(() => {
-		if (!user) {
-			navigate("login");
-		}
-	}, [location.pathname]);
 
 	return (
 		<UserContext.Provider value={{ user, login, logout }}>
