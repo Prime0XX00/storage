@@ -2,11 +2,11 @@ import { useContext } from "react";
 import { LayoutContext } from "../BasicLayout";
 import SidebarLink from "./SidebarLink";
 import IconButton from "../../../IconButton";
-import { DynamicIcon } from "lucide-react/dynamic";
 import { UserContext } from "../../../../features/user/providers/UserProvider";
+import SidebarButton from "./SidebarButton";
 
 const Sidebar = (): React.JSX.Element => {
-	const { sidebarExpanded, toggleSidebar } = useContext(LayoutContext);
+	const { toggleSidebar } = useContext(LayoutContext);
 
 	const { user, logout } = useContext(UserContext) ?? {};
 
@@ -53,22 +53,11 @@ const Sidebar = (): React.JSX.Element => {
 						to="profile"
 					></SidebarLink>
 
-					<button
-						className={`${sidebarExpanded ? " expanded" : ""} sidebar-link`}
+					<SidebarButton
 						onClick={() => logout?.()}
-					>
-						<DynamicIcon
-							name={"log-out"}
-							size={18}
-							strokeWidth={1.75}
-							className="min-w-4.5"
-						></DynamicIcon>
-						<span
-							className={`sidebar-link-title w-full text-start`}
-						>
-							Logout
-						</span>
-					</button>
+						icon="log-out"
+						title="Logout"
+					></SidebarButton>
 				</>
 			)}
 		</div>
