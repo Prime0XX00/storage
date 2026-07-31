@@ -47,21 +47,11 @@ const Sidebar = (): React.JSX.Element => {
 				<>
 					<div className="border-t border-main-border w-full"></div>
 
-					<div
-						className={`${sidebarExpanded ? " expanded" : ""} sidebar-link`}
-					>
-						<DynamicIcon
-							name={"user-circle"}
-							size={18}
-							strokeWidth={1.75}
-							className="min-w-4.5"
-						></DynamicIcon>
-						<span
-							className={`sidebar-link-title w-full text-start`}
-						>
-							{user?.username}
-						</span>
-					</div>
+					<SidebarLink
+						icon={"user-circle"}
+						title={user.username}
+						to="profile"
+					></SidebarLink>
 
 					<button
 						className={`${sidebarExpanded ? " expanded" : ""} sidebar-link`}
