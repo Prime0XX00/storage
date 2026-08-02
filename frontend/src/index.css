@@ -24,7 +24,7 @@
 	--color-accent-hover: oklch(var(--color-accent-oklch) / 0.15);
 	--color-accent-active: oklch(var(--color-accent-oklch) / 0.2);
 
-	--color-sidebar: var(--color-slate-100);
+	--color-sidebar: var(--color-slate-50);
 }
 
 #root {
@@ -65,4 +65,16 @@
 
 .sidebar-link:not(.expanded) .sidebar-link-title {
 	@apply opacity-0;
+}
+
+thead tr:last-of-type th {
+	@apply border-b border-main-border;
+}
+
+tbody tr:not(:last-of-type) td {
+	@apply border-b border-main-border;
+}
+
+tfoot tr:first-of-type td {
+	@apply border-t border-main-border;
 }

@@ -25,9 +25,9 @@ const BasicLayout = ({}: BasicLayoutProps): React.JSX.Element => {
 
 	return (
 		<LayoutContext.Provider value={layoutContextValue}>
-			<div className="flex flex-row h-full">
+			<div className="flex flex-row h-full w-full">
 				<Sidebar />
-				<div className="p-5">
+				<div className="p-5 w-full">
 					<Outlet />
 				</div>
 			</div>
